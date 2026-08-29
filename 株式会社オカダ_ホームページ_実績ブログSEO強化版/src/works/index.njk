@@ -1,0 +1,23 @@
+---
+layout: base.njk
+title: 熊本の飲食店・厨房・店舗内装の施工・支援実績｜株式会社オカダ
+description: 株式会社オカダの飲食店支援事例。業務用厨房機器、厨房設計、店舗内装、新規開業、団体席、セントラルキッチン、経営改善などの対応内容を紹介します。
+permalink: /works/index.html
+schemaType: WebPage
+image: https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1600&q=82
+---
+<section class="blog-hero works-hero"><p class="eyebrow">WORKS / CASE STUDIES</p><h1>施工・支援の<br><em>事例。</em></h1><p>厨房、内装、開業、経営改善まで。<br>飲食店で多い課題を、対応内容ごとに紹介します。</p></section>
+<section class="works-intro section">
+  <div class="works-intro-grid"><div><div class="section-label">01 / OUR WORK</div><h2>店舗の課題を、<br>部分ではなく全体で見る。</h2></div><div><p>株式会社オカダは、業務用厨房機器、店舗設計・内装、飲食店トータルコンサルティングを一つの窓口で支援します。</p><p class="works-note">※守秘義務・掲載許諾の都合から、実店舗名や具体的な数値を掲載せず、実際の相談で多い内容を業態別の「対応事例」として整理しています。公開可能な実績は順次追加予定です。</p></div></div>
+</section>
+<section class="works-list section warm-section">
+  <div class="works-grid">
+  {% for work in collections.works %}
+    <a class="work-card" href="{{ work.url }}">
+      <div class="work-image">{% if work.data.image %}<img loading="lazy" src="{{ work.data.image }}" alt="{{ work.data.imageAlt or work.data.title }}" width="900" height="600">{% endif %}<span>0{{ loop.index }}</span></div>
+      <div class="work-copy"><small>{{ work.data.location or '熊本・九州' }} / {{ work.data.category }}</small><h2>{{ work.data.title }}</h2><p>{{ work.data.description }}</p><b>CASE DETAIL →</b></div>
+    </a>
+  {% endfor %}
+  </div>
+</section>
+<section class="works-cross section dark-section"><div class="section-heading"><div><div class="section-label light">02 / ONE STOP</div><h2>厨房だけでも、<br>経営まででも。</h2></div><p>必要な範囲だけのご相談にも対応します。課題が複数ある場合は、優先順位を整理して一つずつ進めます。</p></div><div class="center-cta"><a class="button" href="/contact/">相談・見積を依頼する <span>→</span></a></div></section>

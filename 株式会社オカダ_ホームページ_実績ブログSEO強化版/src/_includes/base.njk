@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ seoTitle or title }}</title>
+  <meta name="description" content="{{ description }}">
+  <meta name="robots" content="{{ robotsMeta or 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1' }}">
+  <meta name="theme-color" content="#171512">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <meta property="og:type" content="{{ ogType or 'website' }}">
+  <meta property="og:site_name" content="株式会社オカダ">
+  <meta property="og:title" content="{{ seoTitle or title }}">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:locale" content="ja_JP">
+  {% if image %}<meta property="og:image" content="{{ image }}">{% endif %}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ seoTitle or title }}">
+  <meta name="twitter:description" content="{{ description }}">
+  {% if image %}<meta name="twitter:image" content="{{ image }}">{% endif %}
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="stylesheet" href="/assets/style.css">
+  <script defer src="/assets/main.js"></script>
+  <script type="application/ld+json">{
+    "@context":"https://schema.org",
+    "@graph":[
+      {"@type":"WebSite","@id":"{{ site.url }}/#website","url":"{{ site.url }}/","name":"株式会社オカダ","alternateName":"OKADA","inLanguage":"ja"},
+      {"@type":["Organization","LocalBusiness","ProfessionalService"],"@id":"{{ site.url }}/#organization","name":"株式会社オカダ","url":"{{ site.url }}/","image":"{{ site.defaultImage }}","email":"{{ site.email }}","contactPoint":{"@type":"ContactPoint","contactType":"customer service","email":"{{ site.email }}","availableLanguage":"Japanese"},"founder":{"@type":"Person","name":"福留 明"},"address":{"@type":"PostalAddress","postalCode":"860-0803","addressRegion":"熊本県","addressLocality":"熊本市中央区","streetAddress":"新市街3-7 アクアビル地下1階","addressCountry":"JP"},"areaServed":[{"@type":"AdministrativeArea","name":"熊本県"},{"@type":"AdministrativeArea","name":"九州"}],"knowsAbout":["業務用厨房機器","店舗設計","店舗内装","飲食店コンサルティング","メニュー開発","飲食店集客","飲食店DX"]}
+      {% if schemaType == "Service" %},{"@type":"Service","name":"{{ serviceName }}","provider":{"@id":"{{ site.url }}/#organization"},"areaServed":{"@type":"AdministrativeArea","name":"熊本県"},"serviceType":"{{ serviceType }}","url":"{{ site.url }}{{ page.url }}"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"トップ","item":"{{ site.url }}/"},{"@type":"ListItem","position":2,"name":{{ serviceName | json | safe }},"item":"{{ site.url }}{{ page.url }}"}]}{% endif %}
+      {% if schemaType == "ContactPage" %},{"@type":"ContactPage","name":"株式会社オカダ お問い合わせ","url":"{{ site.url }}{{ page.url }}","about":{"@id":"{{ site.url }}/#organization"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"トップ","item":"{{ site.url }}/"},{"@type":"ListItem","position":2,"name":"お問い合わせ","item":"{{ site.url }}{{ page.url }}"}]}{% endif %}
+      {% if schemaType == "Blog" %},{"@type":"Blog","name":"オカダ 飲食経営の実践ノート","url":"{{ site.url }}{{ page.url }}","publisher":{"@id":"{{ site.url }}/#organization"},"inLanguage":"ja"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"トップ","item":"{{ site.url }}/"},{"@type":"ListItem","position":2,"name":"ブログ","item":"{{ site.url }}{{ page.url }}"}]}{% endif %}
+      {% if schemaType == "WebPage" %},{"@type":"WebPage","url":"{{ site.url }}{{ page.url }}","name":"{{ title }}","isPartOf":{"@id":"{{ site.url }}/#website"},"about":{"@id":"{{ site.url }}/#organization"},"inLanguage":"ja"}{% endif %}
+      {% if schemaType == "AboutPage" %},{"@type":"AboutPage","url":"{{ site.url }}{{ page.url }}","name":"株式会社オカダ 会社概要","about":{"@id":"{{ site.url }}/#organization"},"inLanguage":"ja"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"トップ","item":"{{ site.url }}/"},{"@type":"ListItem","position":2,"name":"会社概要","item":"{{ site.url }}{{ page.url }}"}]}{% endif %}
+    ]
+  }</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へ移動</a>
+  <header class="site-header" id="top">
+    <a class="brand" href="/" aria-label="株式会社オカダ ホーム">
+      <span class="brand-mark" aria-hidden="true">O</span>
+      <span class="brand-copy"><b>株式会社オカダ</b><small>OKADA Co., Ltd.</small></span>
+    </a>
+    <button class="menu-button" aria-expanded="false" aria-controls="global-nav" aria-label="メニューを開く"><span></span><span></span></button>
+    <nav id="global-nav" class="nav" aria-label="メインナビゲーション">
+      <a href="/services/kitchen-equipment-kumamoto/">厨房機器</a>
+      <a href="/services/restaurant-interior-kumamoto/">店舗設計・内装</a>
+      <a href="/services/restaurant-consulting-kumamoto/">飲食店コンサル</a>
+      <a href="/works/">実績</a>
+      <a href="/blog/">ブログ</a>
+      <a href="/company/">会社概要</a>
+      <a class="nav-cta" href="/contact/">お問い合わせ</a>
+    </nav>
+  </header>
+
+  <main id="main">{{ content | safe }}</main>
+
+  <aside class="floating-contact" aria-label="お問い合わせ">
+    <a href="/contact/"><span>CONTACT</span><b>無料相談・見積依頼</b></a>
+  </aside>
+
+  <footer class="footer">
+    <div class="footer-main">
+      <div><div class="footer-brand">株式会社オカダ</div><p>厨房機器・店舗内装・飲食店経営まで。熊本の飲食ビジネスを、もっと強く。</p></div>
+      <nav class="footer-nav" aria-label="フッターナビゲーション">
+        <a href="/services/kitchen-equipment-kumamoto/">熊本の業務用厨房機器</a>
+        <a href="/services/restaurant-interior-kumamoto/">熊本の店舗設計・内装</a>
+        <a href="/services/restaurant-consulting-kumamoto/">熊本の飲食店コンサル</a>
+        <a href="/works/">施工・支援実績</a>
+        <a href="/blog/">飲食店経営ブログ</a>
+        <a href="/company/">会社概要</a>
+        <a href="/contact/">お問い合わせ</a>
+      </nav>
+      <div class="footer-meta">
+        <p>代表取締役　福留 明</p>
+        <p>〒860-0803<br>熊本市中央区新市街3-7 アクアビル地下1階</p>
+        <p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom"><small>© 2026 OKADA Co., Ltd. All Rights Reserved.</small><div><a href="/privacy/">プライバシーポリシー</a><a href="#top">PAGE TOP ↑</a></div></div>
+  </footer>
+</body>
+</html>

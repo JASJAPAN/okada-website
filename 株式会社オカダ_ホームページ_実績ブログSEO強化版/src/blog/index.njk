@@ -1,0 +1,11 @@
+---
+layout: base.njk
+title: 熊本の飲食店経営ブログ｜厨房機器・内装・集客｜株式会社オカダ
+description: 熊本の飲食店経営に役立つ、厨房機器、店舗内装、集客、原価、人材、商品開発、経営改善の実践情報を株式会社オカダが発信します。
+permalink: /blog/index.html
+schemaType: Blog
+---
+<section class="blog-hero"><p class="eyebrow">OKADA JOURNAL / KUMAMOTO</p><h1>飲食経営の<br><em>実践ノート。</em></h1><p>厨房機器、店舗づくり、集客、利益改善。<br>飲食の現場で使える情報を、熊本から発信します。</p></section>
+<section class="blog-list section"><div class="blog-intro"><h2>熊本の飲食店経営に、<br>すぐ使える情報を。</h2><p>株式会社オカダが、飲食店の厨房・内装・経営支援で培った視点から記事を更新します。</p></div><div class="post-grid">
+{% for post in collections.blog %}<a class="post-card" href="{{ post.url }}">{% if post.data.image %}<img class="post-thumb" loading="lazy" src="{{ post.data.image }}" alt="{{ post.data.imageAlt or post.data.title }}" width="900" height="600">{% endif %}<div class="post-content"><span>{{ post.date | dateJP }} / {{ post.data.category }}</span><h2>{{ post.data.title }}</h2><p>{{ post.data.description }}</p><b>READ MORE →</b></div></a>{% endfor %}
+</div></section>

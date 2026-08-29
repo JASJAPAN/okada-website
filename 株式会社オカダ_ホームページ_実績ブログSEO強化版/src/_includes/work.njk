@@ -1,0 +1,22 @@
+---
+layout: base.njk
+---
+<article class="article-wrap work-article">
+  <header class="article-header">
+    <nav class="breadcrumb" aria-label="パンくず"><a href="/">トップ</a><span>›</span><a href="/works/">施工・支援実績</a><span>›</span><span>{{ title }}</span></nav>
+    <p class="article-meta">WORKS / {{ category }}{% if location %} / {{ location }}{% endif %}</p>
+    <h1>{{ title }}</h1>
+    <div class="article-intro">{{ description }}</div>
+    {% if image %}<img class="article-hero-image" src="{{ image }}" alt="{{ imageAlt or title }}" width="1400" height="900"><p class="image-note">※写真はイメージです。実績写真は掲載許諾を得た案件から順次追加します。</p>{% endif %}
+  </header>
+  <div class="article-layout">
+    <div class="article-body">{{ content | safe }}</div>
+    <aside class="article-sidebar">
+      <div><small>株式会社オカダ</small><b>厨房・内装・経営を<br>一つの窓口で。</b><p>同じような課題がある場合は、現状整理からご相談いただけます。</p><a class="button small" href="/contact/">無料相談 →</a></div>
+      <nav><a href="/works/">実績・対応事例一覧 →</a><a href="/services/kitchen-equipment-kumamoto/">業務用厨房機器 →</a><a href="/services/restaurant-interior-kumamoto/">店舗設計・内装 →</a><a href="/services/restaurant-consulting-kumamoto/">飲食店コンサル →</a></nav>
+    </aside>
+  </div>
+  <div class="article-cta"><p>店舗づくり・厨房・経営改善でお困りですか？</p><h2>計画が固まる前でもご相談ください。</h2><a class="button" href="/contact/">株式会社オカダに相談する →</a></div>
+</article>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":{{ title | json | safe }},"description":{{ description | json | safe }},"url":"{{ site.url }}{{ page.url }}","image":{{ image | json | safe }},"about":{"@id":"{{ site.url }}/#organization"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"トップ","item":"{{ site.url }}/"},{"@type":"ListItem","position":2,"name":"施工・支援実績","item":"{{ site.url }}/works/"},{"@type":"ListItem","position":3,"name":{{ title | json | safe }},"item":"{{ site.url }}{{ page.url }}"}]}</script>

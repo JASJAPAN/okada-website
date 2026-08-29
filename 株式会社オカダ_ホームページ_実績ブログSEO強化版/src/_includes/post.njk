@@ -1,0 +1,12 @@
+---
+layout: base.njk
+---
+<article class="article-wrap">
+  <header class="article-header"><nav class="breadcrumb" aria-label="パンくず"><a href="/">トップ</a><span>›</span><a href="/blog/">ブログ</a><span>›</span><span>{{ title }}</span></nav><p class="article-meta">{{ date | dateJP }} / {{ category or "飲食店経営" }}</p><h1>{{ title }}</h1><div class="article-intro">{{ description }}</div>{% if image %}<img class="article-hero-image" src="{{ image }}" alt="{{ imageAlt or title }}" width="1400" height="900">{% endif %}</header>
+  <div class="article-layout"><div class="article-body">{{ content | safe }}</div><aside class="article-sidebar"><div><small>株式会社オカダ</small><b>飲食店の課題を<br>一気通貫で支援。</b><p>厨房機器、店舗内装、経営改善までご相談いただけます。</p><a class="button small" href="/contact/">無料相談 →</a></div><nav><a href="/services/kitchen-equipment-kumamoto/">熊本の業務用厨房機器 →</a><a href="/services/restaurant-interior-kumamoto/">熊本の店舗設計・内装 →</a><a href="/services/restaurant-consulting-kumamoto/">熊本の飲食店コンサル →</a><a href="/works/">施工・支援実績 →</a></nav></aside></div>
+  <section class="article-related"><div class="section-label">RELATED JOURNAL</div><h2>あわせて読みたい記事</h2><div class="related-post-grid">{% for post in collections.blog %}{% if loop.index <= 3 %}<a href="{{ post.url }}"><small>{{ post.data.category }}</small><b>{{ post.data.title }}</b><span>READ →</span></a>{% endif %}{% endfor %}</div></section>
+  <div class="article-cta"><p>厨房・店舗づくり・飲食店経営でお困りですか？</p><h2>相談内容が固まっていなくても大丈夫です。</h2><a class="button" href="/contact/">株式会社オカダに相談する →</a></div>
+</article>
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":{{ title | json | safe }},"description":{{ description | json | safe }},"datePublished":"{{ date | dateISO }}","mainEntityOfPage":"{{ site.url }}{{ page.url }}","author":{"@id":"{{ site.url }}/#organization"},"publisher":{"@id":"{{ site.url }}/#organization"}{% if image %},"image":{{ image | json | safe }}{% endif %}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"トップ","item":"{{ site.url }}/"},{"@type":"ListItem","position":2,"name":"ブログ","item":"{{ site.url }}/blog/"},{"@type":"ListItem","position":3,"name":{{ title | json | safe }},"item":"{{ site.url }}{{ page.url }}"}]}</script>
